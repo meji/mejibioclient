@@ -1,0 +1,37 @@
+:root {
+    --breakpoint-sm: 375px;
+    --breakpoint-md: 540px;
+    --breakpoint-lg: 768px;
+    --breakpoint-xl: 1024px;
+    --breakpoint-xxl: 1280px;
+    --breakpoint-xxxl: 1400px;
+    --gutter: 16px;
+    //fonts
+    --fontSize: 16px;
+    --font-main: 'Avenir', Helvetica, Sans Serif;
+    --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
+    //Colors
+    --colorForm: #ffffff;
+    --borderForm: #cccccc;
+    --main-color: green;
+    --textColor: #666;
+    --textDarkColor: #000;
+    --textLightColor: #aaaaaa;
+    --textLinkColor: #000;
+    --textLinkColorNegative: red;
+    --heroBgColor: #000;
+    --backgroundColor: #fff;
+    --error-color: #ff0000;
+    //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
+    --transition-normal: 0.3s;
+    --border-radius: 4px;
+}
+@custom-media --viewport-xs (max-width: var(--breakpoint-sm));
+@custom-media --viewport-sm (min-width: var(--breakpoint-sm));
+@custom-media --viewport-md (min-width: var(--breakpoint-md));
+@custom-media --viewport-lg (min-width: var(--breakpoint-lg));
+@custom-media --viewport-xl (min-width: var(--breakpoint-xl));
+@custom-media --viewport-xxl (min-width: var(--breakpoint-xxl));
+@custom-media --viewport-xxl (min-width: var(--breakpoint-xxxl));
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;

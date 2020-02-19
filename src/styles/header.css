@@ -1,0 +1,85 @@
+header#header {
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    display:flex;
+    justify-content: space-between;
+    #logo{
+        font-family: var(--font-secondary);
+        color: #fff;
+        font-size: 300%;
+        padding: calc(var(--gutter) * 2);
+        text-decoration: none;
+        opacity: 0.5;
+        &:hover{
+            opacity: 1;
+            transition: var(--transition-normal);
+        }
+    }
+    nav {
+        display: none;
+    }
+
+    #menu-icon {
+        justify-self: flex-end;
+        width: 30px;
+        height: 40px;
+        display: inline-block;
+        cursor: url('../assets/img/arrow2.svg'), move;
+        padding: calc(var(--gutter) * 2);
+
+        div:after {
+            opacity: 0;
+        }
+
+        &:after,
+        &:before,
+        div {
+            background-color: #fff;
+            content: '';
+            display: block;
+            height: 1.5px;
+            margin: 10px 0;
+            transition: all 0.8s ease-in-out;
+            border-radius: 1px;
+        }
+        div{
+            width: 70%;
+        }
+
+        &:hover {
+            /*&:before {transform: translateY(6px) rotate(135deg);}*/
+            /*&:after {transform: translateY(-6px) rotate(-135deg);}*/
+
+            div {
+                transform: scaleX(2.3) translateX(-15px);
+                position: relative;
+            }
+
+            div:after {
+                content: 'Menu';
+                font-family: var(--font-secondary);
+                font-size: 150%;
+                text-transform: uppercase;
+                position: absolute;
+                top: -30px;
+                width: 100px;
+                transform: scaleX(0.4) translateX(-74px);
+                color: #ccc;
+                opacity: 1;
+            }
+
+            &:before {
+                transform: translateY(20px);
+            }
+
+            &:after {
+                transform: translateX(-75px);
+            }
+        }
+    }
+}

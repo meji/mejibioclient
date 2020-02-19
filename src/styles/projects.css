@@ -1,0 +1,108 @@
+.project-view {
+    #hero {
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        .container {
+            position: relative;
+            z-index:1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            h1{
+                font-family: var(--font-main);
+                filter: invert(1);
+                mix-blend-mode: difference;
+                line-height: 1;
+                opacity: 0.3;
+                font-size: 7vw;
+            }
+        }
+        img{
+            object-fit: cover;
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            transition: 10s;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    header{
+        background: #000;
+        color: #fff;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .logo-img {
+                flex: 1;
+                min-height: 100px;
+                width: auto;
+                margin-bottom: calc(var(--gutter)*2);
+            }
+            .data {
+                flex: 1;
+                text-align: center;
+                color: var(--textLightColor);
+                a{
+                    color: var(--textLinkColorNegative)
+                }
+                strong{color: #fff;}
+            }
+            .content{flex: 1}
+        }
+    }
+    .content{color: var(--textLightColor)}
+}
+@media (--viewport-lg) {
+    .project-view{
+        #hero {
+            height: 40vh;
+            transition: 3s;
+            img{
+                min-height: 100vh;
+                min-width: 100vw;
+                max-width: none;
+            }
+            //&:hover img{
+            //    transition: 10s;
+            //    top: -80%;
+            //}
+            &:hover{
+                height: 70vh;
+                & ~ header {
+                    height: 30vh !important;
+                }
+            }
+        }
+        header{
+            height: 60vh;
+            transition: 3s;
+            &:hover{
+                height: 70vh;
+                ~ #hero {
+                    height: 30vh !important;
+                    min-height: 0;
+                }
+            }
+            .flex-container{
+                flex-direction: row;
+                align-items: flex-start;
+                .data{
+                    flex: 2;
+                    padding-left: calc(var(--gutter) * 6);
+                    text-align: left;
+                }
+                .logo-img{flex: 1}
+                .content{flex: 4 }
+            }
+        }
+    }
+}
