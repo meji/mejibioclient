@@ -1,9 +1,8 @@
-///HOME
+//HOME
 //Home Hero
 .home {
     header#header {
         justify-content: flex-end;
-
         #logo {
             display: none
         }
@@ -81,7 +80,7 @@
             position: relative;
             min-width: 300px;
             display: block;;
-            min-height: 150px;
+            //min-height: 150px;
             .letters:not(.meji) {
                 font-size: 70%;
                 position: absolute;
