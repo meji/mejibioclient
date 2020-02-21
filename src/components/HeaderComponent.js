@@ -1,6 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export default function  Header() {
+    const toggleMenu = (e) =>{
+        e.preventDefault();
+        const target = e.currentTarget;
+        target.parentNode.querySelector('nav').classList.toggle('active');
+    }
     return (
         <header id="header">
             <a id="logo" href="/" title="Go home">Meji</a>
@@ -17,7 +22,7 @@ export default function  Header() {
                     </li>
                 </ul>
             </nav>
-            <span id="menu-icon">
+            <span id="menu-icon" onClick={e => toggleMenu(e)}>
                 <div> </div>
             </span>
         </header>

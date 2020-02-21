@@ -1,3 +1,62 @@
+#projects {
+    background: var(--bodyColor);
+    div {
+        width: 100%;
+    }
+    ul {
+        max-height: 80vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        .featured-project {
+            transition: 2s;
+            height: 33vh;
+            overflow: hidden;
+            position: relative;
+            h2 {
+                font-family: var(--font-main);
+                filter: invert(1);
+                mix-blend-mode: difference;
+                line-height: 1;
+                opacity: 0.3;
+                margin-bottom: var(--gutter);
+                position: relative;
+                z-index: 2;
+            }
+            .logo-img{
+                min-width: 150px;
+                position: relative;
+                z-index: 2;
+                max-width: 200px;
+                display: block;
+                margin: 20px auto;
+            }
+            .main-img {
+                height: auto;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+                max-width: 140vw;
+                width: auto;
+            }
+            &:hover{
+                cursor: url('../assets/img/arrow.svg'), move;
+
+                h2 {
+                    filter: invert(50%);
+                    transition: 4s;
+                    mix-blend-mode: color-dodge;
+                }
+
+                img.logo-img {
+                    filter: invert(100%);
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}
 .project-view {
     #hero {
         height: 100vh;
@@ -102,6 +161,20 @@
                 }
                 .logo-img{flex: 1}
                 .content{flex: 4 }
+            }
+        }
+    }
+    #projects{
+        .featured-project:hover {
+            height: 60vh;
+            img.main-img {
+                transition: 10s;
+                top: -40vh;
+                min-height: 100%;
+            }
+
+            ~ * {
+                height: 20vh;
             }
         }
     }
