@@ -8,6 +8,7 @@
     --gutter: 16px;
     //fonts
     --fontSize: 16px;
+    --fontSizeBig: 48px;
     --font-main: 'Avenir', Helvetica, Sans Serif;
     --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
     //Colors
@@ -18,12 +19,14 @@
     --textDarkColor: #000;
     --textLightColor: #aaaaaa;
     --textLinkColor: #000;
-    --textLinkColorNegative: red;
+    --textLinkColorNegative: #ffffff80;
     --heroBgColor: #000;
-    --backgroundColor: #fff;
+    --backgroundColor: #000;
+    --bodyColor: #fff;
     --error-color: #ff0000;
     //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
     --transition-normal: 0.3s;
+    --transition-medium: 1.2s;
     --border-radius: 4px;
 }
 @custom-media --viewport-xs (max-width: var(--breakpoint-sm));

@@ -14,6 +14,7 @@
     --gutter: 16px;
     /*fonts */
     --fontSize: 16px;
+    --fontSizeBig: 48px;
     --font-main: 'Avenir', Helvetica, Sans Serif;
     --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
     /*Colors */
@@ -24,13 +25,45 @@
     --textDarkColor: #000;
     --textLightColor: #aaaaaa;
     --textLinkColor: #000;
-    --textLinkColorNegative: red;
+    --textLinkColorNegative: #ffffff80;
     --heroBgColor: #000;
-    --backgroundColor: #fff;
+    --backgroundColor: #000;
+    --bodyColor: #fff;
     --error-color: #ff0000;
     /*--secondaryColor: lab(32.5 38.5 -47.6 / 90%); */
     --transition-normal: 0.3s;
+    --transition-medium: 1.2s;
     --border-radius: 4px;
+}
+@keyframes in-out {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes bounceIn {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.3);
+    }
 }
 html {
     overflow-x: hidden;
@@ -38,7 +71,7 @@ html {
     overflow: hidden auto;
 }
 body {
-    background: #fff;
+    background: #000;
     background: var(--backgroundColor);
     color: #666;
     color: var(--textColor);
@@ -177,7 +210,7 @@ img {
     align-content: center;
     text-align: center;
 }
-/*\/HOME */
+/*HOME */
 /*Home Hero */
 .home header#header {
         justify-content: flex-end;
@@ -247,9 +280,9 @@ img {
 .home #hero .split {
             position: relative;
             min-width: 300px;
-            display: block;;
-            min-height: 150px;
+            display: block;
         }
+/*min-height: 150px; */
 .home #hero .split .letters:not(.meji) {
                 font-size: 70%;
                 position: absolute;
@@ -266,6 +299,8 @@ img {
 #bio {
     text-align: center;
     position: relative;
+    background: #fff;
+    background: var(--bodyColor);
 }
 #bio .bio {
         max-width: 540px;
@@ -337,75 +372,6 @@ Serif;
                     transition: 8s;
                     letter-spacing: 6px;
                 }
-/*Home projects */
-#projects div {
-        width: 100%;
-    }
-#projects ul {
-        max-height: 80vh;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-#projects ul .featured-project {
-            transition: 2s;
-            height: 33vh;
-            overflow: hidden;
-            position: relative;
-        }
-#projects ul .featured-project h2 {
-                font-family: 'Avenir'
-,
-Helvetica
-,
-Sans
-Serif;
-                font-family: var(--font-main);
-                filter: invert(1);
-                mix-blend-mode: difference;
-                line-height: 1;
-                opacity: 0.3;
-                margin-bottom: 16px;
-                margin-bottom: var(--gutter)
-            }
-#projects ul .featured-project .logo-img{
-                min-width: 150px;
-            }
-#projects ul .featured-project:hover {
-                height: 60vh;
-                cursor: url('assets/img/arrow.svg'), move;
-            }
-#projects ul .featured-project:hover h2 {
-                    filter: invert(50%);
-                    transition: 4s;
-                    mix-blend-mode: color-dodge;
-                }
-#projects ul .featured-project:hover img.logo-img {
-                    filter: invert(100%);
-                    opacity: 0.6;
-                }
-#projects ul .featured-project:hover img.main-img {
-                    transition: 10s;
-                    top: -40vh;
-                    min-height: 100%;
-                }
-#projects ul .featured-project:hover ~ *{
-                    height: 20vh;
-                }
-#projects ul .featured-project .logo-img {
-                max-width: 200px;
-                display: block;
-                margin: 20px auto;
-            }
-#projects ul .featured-project .main-img {
-                height: auto;
-                position: absolute;
-                left: 0;
-                top: 0;
-                z-index: -1;
-                max-width: 140vw;
-                width: auto;
-            }
 /*Home projects over Mobile */
 @media (min-width: 540px) {
         #projects ul .featured-project .main-img {
@@ -415,29 +381,6 @@ Serif;
             font-size: 6vw;
             opacity: 1;
         }
-}
-/*Animations */
-@keyframes bounceIn {
-    0% {
-        opacity: 1;
-        transform: scale(1) translate3d(0, 0, 0);
-    }
-    50% {
-        opacity: 0.9;
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-@keyframes zoom {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.3);
-    }
 }
 form{max-width: 600px; margin: 0 auto;
 }
@@ -487,9 +430,8 @@ form input[type="submit"]:hover,form .btn:hover,form button:hover{border-color: 
         form .form-control:focus::placeholder{font-size: 64.25%; line-height: 1; position: relative; top: -10px;}
 }
 header#header {
-    cursor: pointer;
     padding: 0;
-    position: absolute;
+    position: fixed;
     z-index: 10;
     top: 0;
     right: 0;
@@ -517,9 +459,92 @@ header#header #logo:hover{
             transition: 0.3s;
             transition: var(--transition-normal);
         }
-header#header nav {
-        display: none;
-    }
+header#header nav ul{ height: 20vh;
+            transform: translateX(100%)  translateY(-100%);
+            z-index: 3;
+            opacity: 0;
+            transition: 1.2s;
+            transition: var(--transition-medium);
+            margin: 0;
+            padding: 0;
+        }
+header#header nav ul li{
+                font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif;
+                font-family: var(--font-secondary);
+                font-size: 48px;
+                font-size: var(--fontSizeBig);
+            }
+header#header nav ul li a{
+                    letter-spacing: 2px;
+                    color: #fff;
+                    text-decoration: none;
+                    position: relative;
+                    transition: 1.2s;
+                    transition: var(--transition-medium)
+                }
+header#header nav ul li a:hover{
+                        color: #ccc;
+                        letter-spacing: 6px
+                    }
+header#header nav ul li a:hover:after{content:''; height: 2px; background-color:#ffffff80; background-color:var(--textLinkColorNegative); display: block; position: absolute; animation: 0.5s in-out forwards; width: 100%; bottom: -8px;}
+header#header nav:after{
+            content: ' ';
+            border-radius: 100%;
+            background: #000;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            right: -100vw;
+            top: -100vw;
+            transition: 1.2s;
+            transition: var(--transition-medium);
+            z-index: 2;
+        }
+header#header nav.active{
+            z-index: 3;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+
+        }
+header#header nav.active ul{
+                transform: translateX(0) translateY(0) ;
+                opacity: 1;
+                z-index: 100;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                height: 100vh;
+                width: 100vw;
+                text-align: center;
+                flex-direction: column;
+                transition: 1.2s;
+                transition: var(--transition-medium);
+            }
+header#header nav.active:after{
+                background: #333;
+                opacity: 1;
+                z-index: 1;
+                right: -120vw;
+                top: -120vw;
+                width: 340vw;
+                height: 300vw;
+            }
+header#header nav.active + #menu-icon:before {transform: translateY(12px) rotate(135deg);}
+header#header nav.active + #menu-icon div{opacity: 0}
+header#header nav.active + #menu-icon:after {transform: translateY(-10px) rotate(-135deg);}
+header#header nav.active + #menu-icon:hover:before {transform: translateY(12px) rotate(-135deg);}
+header#header nav.active + #menu-icon:hover div{opacity: 0}
+header#header nav.active + #menu-icon:hover:after {transform: translateY(-10px) rotate(135deg);}
 header#header #menu-icon {
         justify-self: flex-end;
         width: 30px;
@@ -528,6 +553,7 @@ header#header #menu-icon {
         cursor: url('assets/img/arrow2.svg'), move;
         padding: 32px;
         padding: calc(var(--gutter)*2);
+        z-index: 4;
     }
 header#header #menu-icon div:after {
             opacity: 0;
@@ -535,7 +561,7 @@ header#header #menu-icon div:after {
 header#header #menu-icon:after,
         header#header #menu-icon:before,
         header#header #menu-icon div {
-            background-color: #fff;
+            background-color: #ddd;
             content: '';
             display: block;
             height: 1.5px;
@@ -546,12 +572,10 @@ header#header #menu-icon:after,
 header#header #menu-icon div{
             width: 70%;
         }
-/*&:after {transform: translateY(-6px) rotate(-135deg);}*/
 header#header #menu-icon:hover div {
                 transform: scaleX(2.3) translateX(-15px);
                 position: relative;
             }
-/*&:before {transform: translateY(6px) rotate(135deg);}*/
 header#header #menu-icon:hover div:after {
                 content: 'Menu';
                 font-family: 'Reenie Beanie'
@@ -576,6 +600,71 @@ header#header #menu-icon:hover:before {
 header#header #menu-icon:hover:after {
                 transform: translateX(-75px);
             }
+#projects {
+    background: #fff;
+    background: var(--bodyColor);
+}
+#projects div {
+        width: 100%;
+    }
+#projects ul {
+        max-height: 80vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+#projects ul .featured-project {
+            transition: 2s;
+            height: 33vh;
+            overflow: hidden;
+            position: relative;
+        }
+#projects ul .featured-project h2 {
+                font-family: 'Avenir'
+,
+Helvetica
+,
+Sans
+Serif;
+                font-family: var(--font-main);
+                filter: invert(1);
+                mix-blend-mode: difference;
+                line-height: 1;
+                opacity: 0.3;
+                margin-bottom: 16px;
+                margin-bottom: var(--gutter);
+                position: relative;
+                z-index: 2;
+            }
+#projects ul .featured-project .logo-img{
+                min-width: 150px;
+                position: relative;
+                z-index: 2;
+                max-width: 200px;
+                display: block;
+                margin: 20px auto;
+            }
+#projects ul .featured-project .main-img {
+                height: auto;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+                max-width: 140vw;
+                width: auto;
+            }
+#projects ul .featured-project:hover{
+                cursor: url('assets/img/arrow.svg'), move;
+            }
+#projects ul .featured-project:hover h2 {
+                    filter: invert(50%);
+                    transition: 4s;
+                    mix-blend-mode: color-dodge;
+                }
+#projects ul .featured-project:hover img.logo-img {
+                    filter: invert(100%);
+                    opacity: 0.6;
+                }
 .project-view #hero {
         height: 100vh;
         overflow: hidden;
@@ -640,7 +729,7 @@ Serif;
                 color: var(--textLightColor);
             }
 .project-view header .flex-container .data a{
-                    color: red;
+                    color: #ffffff80;
                     color: var(--textLinkColorNegative)
                 }
 .project-view header .flex-container .data strong{color: #fff;}
@@ -689,6 +778,18 @@ Serif;
                 }
                 .project-view header .flex-container .logo-img{flex: 1}
                 .project-view header .flex-container .content{flex: 4 }
+        #projects .featured-project:hover {
+            height: 60vh;
+        }
+            #projects .featured-project:hover img.main-img {
+                transition: 10s;
+                top: -40vh;
+                min-height: 100%;
+            }
+
+            #projects .featured-project:hover ~ * {
+                height: 20vh;
+            }
 }
 body.admin{
     text-align: center;
