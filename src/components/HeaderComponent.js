@@ -15,7 +15,7 @@ export default function  Header() {
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="/cv">Curriculum</a>
+                        <a href="#"><del>Curriculum</del></a>
                     </li>
                     <li>
                         <a href="/projects">Projects</a>
