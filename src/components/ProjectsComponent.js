@@ -34,7 +34,7 @@ function Projects(props) {
     return(
         <section id="projects" className="v-align t-center screen-height">
             <div>
-                <h2>Last Projects</h2>
+                <h2 className="section-title"><span>Last Projects</span></h2>
                 <ul className="no-style">
                     {projects}
                 </ul>

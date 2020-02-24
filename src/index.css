@@ -33,6 +33,7 @@
     /*--secondaryColor: lab(32.5 38.5 -47.6 / 90%); */
     --transition-normal: 0.3s;
     --transition-medium: 1.2s;
+    --transition-large: 2s;
     --border-radius: 4px;
 }
 @keyframes in-out {
@@ -220,6 +221,7 @@ img {
         }
 .home #hero {
         background-color: #050505;
+        overflow: hidden;
     }
 .home #hero h1 {
             position: relative;
@@ -257,13 +259,10 @@ img {
             cursor: url('assets/img/heart.svg'), move;
             transition: 1s;
         }
-.home #hero h3.claim:hover {
-            cursor: url('assets/img/arrow-down.svg'), move;
-            transition: 1s;
-        }
 .home #hero h2.position {
             margin-top: 120px;
             padding: 20px;
+            line-height: 1;
         }
 .home #hero h3.claim {
             font-weight: 300;
@@ -272,6 +271,7 @@ img {
             margin-bottom: -150px;
             z-index: 2;
             position: relative;
+            background: url('assets/img/arrow-down.svg') no-repeat center 80px;
         }
 .home #hero .letter {
             display: inline-block;
@@ -282,9 +282,8 @@ img {
             min-width: 300px;
             display: block;
         }
-/*min-height: 150px; */
 .home #hero .split .letters:not(.meji) {
-                font-size: 70%;
+                font-size: 40%;
                 position: absolute;
                 margin: auto;
                 left: 0;
@@ -372,15 +371,18 @@ Serif;
                     transition: 8s;
                     letter-spacing: 6px;
                 }
-/*Home projects over Mobile */
 @media (min-width: 540px) {
-        #projects ul .featured-project .main-img {
-            max-width: 100%;
-        }
-        #projects ul .featured-project h2 {
-            font-size: 6vw;
-            opacity: 1;
-        }
+                .home #hero .split .letter:not(.meji) {
+                    font-size: 70%
+                }
+
+            .home #hero h3.claim{
+                background: none
+         }
+                .home #hero h3.claim:hover {
+                    cursor: url('assets/img/arrow-down.svg'), move;
+                    transition: 1s;
+                }
 }
 form{max-width: 600px; margin: 0 auto;
 }
@@ -438,6 +440,7 @@ header#header {
     left: 0;
     display:flex;
     justify-content: space-between;
+    height: 100px;
 }
 header#header #logo{
         font-family: 'Reenie Beanie'
@@ -447,7 +450,7 @@ Helvetica
 Sans
 Serif;
         font-family: var(--font-secondary);
-        color: #fff;
+        color: #ccc;
         font-size: 300%;
         padding: 32px;
         padding: calc(var(--gutter)*2);
@@ -459,12 +462,16 @@ header#header #logo:hover{
             transition: 0.3s;
             transition: var(--transition-normal);
         }
-header#header nav ul{ height: 20vh;
-            transform: translateX(100%)  translateY(-100%);
+header#header nav {
+        opacity: 0;
+        z-index:0;
+    }
+header#header nav ul{ height: 100vh;
+            transform: translateX(100%);
             z-index: 3;
             opacity: 0;
-            transition: 1.2s;
-            transition: var(--transition-medium);
+            transition: 2s;
+            transition: var(--transition-large);
             margin: 0;
             padding: 0;
         }
@@ -496,11 +503,11 @@ header#header nav:after{
             content: ' ';
             border-radius: 100%;
             background: #000;
-            width: 100vw;
-            height: 100vh;
+            width: 0;
+            height: 0;
             position: absolute;
-            right: -100vw;
-            top: -100vw;
+            right: 0;
+            top: 0;
             transition: 1.2s;
             transition: var(--transition-medium);
             z-index: 2;
@@ -513,10 +520,11 @@ header#header nav.active{
             width: 100vw;
             height: 100vh;
             display: block;
+            opacity: 1;
 
         }
 header#header nav.active ul{
-                transform: translateX(0) translateY(0) ;
+                transform: translateX(0);
                 opacity: 1;
                 z-index: 100;
                 position: relative;
@@ -534,10 +542,12 @@ header#header nav.active:after{
                 background: #333;
                 opacity: 1;
                 z-index: 1;
-                right: -120vw;
-                top: -120vw;
-                width: 340vw;
-                height: 300vw;
+                right: -100vw;
+                top: -100vh;
+                width: 250vw;
+                height: 250vh;
+                transition: 1.2s;
+                transition: var(--transition-medium);
             }
 header#header nav.active + #menu-icon:before {transform: translateY(12px) rotate(135deg);}
 header#header nav.active + #menu-icon div{opacity: 0}
@@ -572,11 +582,13 @@ header#header #menu-icon:after,
 header#header #menu-icon div{
             width: 70%;
         }
-header#header #menu-icon:hover div {
+@media (min-width: 768px) {
+            header#header #menu-icon:hover div {
                 transform: scaleX(2.3) translateX(-15px);
                 position: relative;
             }
-header#header #menu-icon:hover div:after {
+
+            header#header #menu-icon:hover div:after {
                 content: 'Menu';
                 font-family: 'Reenie Beanie'
 ,
@@ -594,13 +606,17 @@ Serif;
                 color: #ccc;
                 opacity: 1;
             }
-header#header #menu-icon:hover:before {
+
+            header#header #menu-icon:hover:before {
                 transform: translateY(20px);
             }
-header#header #menu-icon:hover:after {
+
+            header#header #menu-icon:hover:after {
                 transform: translateX(-75px);
             }
+}
 #projects {
+    position: relative;
     background: #fff;
     background: var(--bodyColor);
 }
@@ -702,6 +718,17 @@ Serif;
             height: 100%;
             width: 100%;
         }
+.project-view #hero .arrow{
+            cursor: pointer;
+            content: " ";
+            width: 40px;
+            height: 100px;
+            background: url('assets/img/arrow-down.svg') no-repeat center center;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -20px;
+        }
 .project-view header{
         background: #000;
         color: #fff;
@@ -739,10 +766,6 @@ Serif;
         .project-view #hero {
             height: 40vh;
             transition: 3s;
-            /*&:hover img{ */
-            /*    transition: 10s; */
-            /*    top: -80%; */
-            /*} */
         }
             .project-view #hero img{
                 min-height: 100vh;
@@ -755,6 +778,7 @@ Serif;
                 .project-view #hero:hover ~ header {
                     height: 30vh !important;
                 }
+            .project-view #hero .arrow{display: none}
         .project-view header{
             height: 60vh;
             transition: 3s
@@ -789,6 +813,52 @@ Serif;
 
             #projects .featured-project:hover ~ * {
                 height: 20vh;
+            }
+}
+@media (min-width: 768px) {
+    #projects {
+        align-items: flex-start;
+    }
+        #projects h2.section-title{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            padding: 10px;
+            color: #fff;
+            z-index: 10;
+            font-family: 'Avenir'
+,
+Helvetica
+,
+Sans
+Serif;
+            font-family: var(--font-main);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.3);
+            height: 100%;
+            margin: 0;
+        }
+            #projects h2.section-title span{
+                transform: rotate(270deg);
+                position: absolute;
+                margin: 0;
+                padding: 0;
+                top: 50%;
+                left: -220px;
+                display: block;
+                width: 500px;
+                color: rgba(0,0,0, 0.9)
+            }
+            #projects ul .featured-project .main-img {
+                max-width: 100%;
+            }
+
+            #projects ul .featured-project h2 {
+                font-size: 6vw;
+                opacity: 1;
             }
 }
 body.admin{

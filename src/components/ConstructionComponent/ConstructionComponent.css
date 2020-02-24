@@ -1,0 +1,17 @@
+.construction{
+    background: red;
+    opacity: 0.6;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    z-index: 100;
+    text-align: center;
+    font-size: 9px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 3px;
+}

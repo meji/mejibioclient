@@ -3,7 +3,6 @@ import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
 import  {scrollAnchors, animatione} from '../utils/tools'
 import addBodyClassName from '../utils/addBodyClassName'
-import {Fade, Stagger} from 'react-animation-components'
 
 function Hero ({bios, isLoading, errMess}) {
     if(isLoading){
@@ -72,7 +71,7 @@ function Bios ({bios, isLoading, errMess}) {
 export default function  Home(props) {
     addBodyClassName('home');
     return (
-        <div class="home">
+        <div className="home">
             <Hero
                 bios={props.bios}
                 isLoading = {props.bioLoading}

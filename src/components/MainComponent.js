@@ -4,6 +4,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Project from './ProjectComponent';
 import Projects from './ProjectsComponent';
+import Construction from './ConstructionComponent/ConstructionComponent';
 import Admin from './AdminComponent'
 import Cv from './CvComponent';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
@@ -66,6 +67,7 @@ class Main extends Component{
         }
         return(
             <div>
+                <Construction/>
                 <Header/>
                 <main>
                     <TransitionGroup>
@@ -117,7 +119,7 @@ class Main extends Component{
                         </CSSTransition>
                     </TransitionGroup>
                 </main>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         );
     }

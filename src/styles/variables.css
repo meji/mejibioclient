@@ -27,6 +27,7 @@
     //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
     --transition-normal: 0.3s;
     --transition-medium: 1.2s;
+    --transition-large: 2s;
     --border-radius: 4px;
 }
 @custom-media --viewport-xs (max-width: var(--breakpoint-sm));
